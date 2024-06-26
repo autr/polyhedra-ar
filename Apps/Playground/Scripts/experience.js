@@ -7769,6 +7769,8 @@ const polyhedra = {
 
 // #define JAVASCRIPT
 
+const isNative = false
+
 function GetTubeConfig( { path, radius, resolution, cornerResolution, capEnds } ) {
 
 	if (isNative) SAY('TUBE --> A')
