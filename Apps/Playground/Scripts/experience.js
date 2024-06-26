@@ -7769,8 +7769,6 @@ const polyhedra = {
 
 // #define JAVASCRIPT
 
-const isNative = false
-
 function GetTubeConfig( { path, radius, resolution, cornerResolution, capEnds } ) {
 
 	if (isNative) SAY('TUBE --> A')
@@ -7979,6 +7977,8 @@ function CreateTubeVertexData(options) {
 
 }
 
+const isNative = true
+
 /// <reference path="../../node_modules/babylonjs/babylon.module.d.ts" />
 /// <reference path="../../node_modules/babylonjs-loaders/babylonjs.loaders.module.d.ts" />
 /// <reference path="../../node_modules/babylonjs-materials/babylonjs.materials.module.d.ts" />
@@ -7986,16 +7986,18 @@ function CreateTubeVertexData(options) {
 
 const SAY = (...args) => console.log(...args)
 
-const isNative = true // DO NOT CHANGE THIS
-
 SAY('MODE', isNative ? 'NATIVE' : 'WEB')
 
 window.runNativeXR = () => {
 
+	SAY('RUN')
+	
 	window.BB = window.BABYLON
 	window.nativeXRInited = true
 
 	// ENGINE
+
+	SAY('ENGINES')
 
 	let engine = null
 
@@ -8011,6 +8013,8 @@ window.runNativeXR = () => {
 
 	// SCENE
 
+	SAY('SCENE')
+
 	const scene = new BB.Scene(engine)
 
 	scene.createDefaultEnvironment({ createGround: false, createSkybox: false })
@@ -8022,6 +8026,8 @@ window.runNativeXR = () => {
 	const xrMeshes = {}
 	const xrSpeeds = {}
 	const xrRotates = {}
+
+	SAY('LOOP')
 
 	engine.runRenderLoop(() => {
 		// for (const [id, item] of Object.entries(xrRotates)) {
@@ -8060,49 +8066,49 @@ window.runNativeXR = () => {
 	const images = [
 
 		{ 
-			src: 'https://raw.githubusercontent.com/autr/artrackerimages/main/5lCBRz3.png', 
+			src: 'https://raw.githubusercontent.com/autr/polyhedra-ar/master/armarkers/5lCBRz3.png', 
 			estimatedRealWorldWidth: .2, // of 1 metre
 			uid: 'CUBE',
 			color: new BB.Color4(...colors.greenish),
 			colorSpec: new BB.Color4(...colors.turqish)
 		},
 		{
-			src: 'https://raw.githubusercontent.com/autr/artrackerimages/main/1Vu36X4.png', 
+			src: 'https://raw.githubusercontent.com/autr/polyhedra-ar/master/armarkers/1Vu36X4.png', 
 			estimatedRealWorldWidth: .2, // of 1 metre
 			uid: 'DODECAHEDRON',
 			color: new BB.Color4(...colors.purpleish),
 			colorSpec: new BB.Color4(...colors.reddish)
 		},
 		{
-			src: 'https://raw.githubusercontent.com/autr/artrackerimages/main/BOLnIUM.png', 
+			src: 'https://raw.githubusercontent.com/autr/polyhedra-ar/master/armarkers/BOLnIUM.png', 
 			estimatedRealWorldWidth: .2, // of 1 metre
 			uid: 'ICOSAHEDRON',
 			color: new BB.Color4(...colors.blueish),
 			colorSpec: new BB.Color4(...colors.purpleish)
 		},
 		{
-			src: 'https://raw.githubusercontent.com/autr/artrackerimages/main/aPI8r6R.png', 
+			src: 'https://raw.githubusercontent.com/autr/polyhedra-ar/master/armarkers/aPI8r6R.png', 
 			estimatedRealWorldWidth: .2, // of 1 metre
 			uid: 'OCTAHEDRON',
 			color: new BB.Color4(...colors.turqish),
 			colorSpec: new BB.Color4(...colors.blueish)
 		},
 		{
-			src: 'https://raw.githubusercontent.com/autr/artrackerimages/main/xUWEw3z.png', 
+			src: 'https://raw.githubusercontent.com/autr/polyhedra-ar/master/armarkers/xUWEw3z.png', 
 			estimatedRealWorldWidth: .2, // of 1 metre
 			uid: 'TRUNCATEDOCTAHEDRON',
 			color: new BB.Color4(...colors.orangeish),
 			colorSpec: new BB.Color4(...colors.blueish)
 		},
 		{
-			src: 'https://raw.githubusercontent.com/autr/artrackerimages/main/1tLKsm1.png', 
+			src: 'https://raw.githubusercontent.com/autr/polyhedra-ar/master/armarkers/1tLKsm1.png', 
 			estimatedRealWorldWidth: .2, // of 1 metre
 			uid: 'TRUNCATEDTETRAHEDRON',
 			color: new BB.Color4(...colors.reddish),
 			colorSpec: new BB.Color4(...colors.orangeish)
 		},
 		{
-			src: 'https://raw.githubusercontent.com/autr/artrackerimages/main/IzSnITd.png',
+			src: 'https://raw.githubusercontent.com/autr/polyhedra-ar/master/armarkers/IzSnITd.png',
 			estimatedRealWorldWidth: .2,
 			uid: 'GREATRHOMBIICOSADODECAHEDRON',
 			color: new BB.Color4(...colors.fg3),
@@ -8111,6 +8117,7 @@ window.runNativeXR = () => {
 		}
 
 	]
+
     SAY('AFTER COLORS')
 
 	setTimeout(function () {
@@ -8207,10 +8214,12 @@ window.runNativeXR = () => {
 
 }
 
-if (isNative) {
+SAY('PRE')
 
-	SAY('RUN')
-	window.runNativeXR()
-}
+// if (isNative) {
+
+// 	SAY('RUN')
+// 	window.runNativeXR()
+// }
 
 window.runNativeXR()
